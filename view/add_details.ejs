@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="body">
+        <div class="register screen">
+            <form action="/innsertData" method="post" enctype="multipart/form-data">
+                <div class=" from">
+                    <div class="left">
+                        <!-- name -->
+                        <div class="register-item">
+                            <label for="name">name :</label>
+                            <input type="text" name="name" id="name" placeholder="Enter Your Name" value="<%= (typeof data != 'undefined' && typeof data.name != 'undefined' && typeof errors.name == 'undefined')? data.name:''  %>"
+                            >
+                            <p class="validation_err" style="color: red;">
+                                <%= (typeof errors !='undefined' && typeof errors.name !='undefined' )?
+                                    errors.name.msg:'' %>
+                            </p>
+                        </div>
+                        <!-- email -->
+                        <div class="register-item">
+                            <label for="email">email :</label>
+                            <input type="text" name="email" id="email" placeholder="Enter Your Email" value="<%= (typeof data!='undefined' && typeof data.email != 'undefined' && typeof errors.email == 'undefined')? data.email : '' %>">
+                            <p class="validation_err" style="color: red;">
+                                <%= (typeof errors !='undefined' && typeof errors.email !='undefined' )?
+                                    errors.email.msg:'' %>
+                            </p>
+                        </div>
+                        <!-- password -->
+                        <div class="register-item">
+                            <label for="password">password :</label>
+                            <input type="password" name="password" id="password" placeholder="Enter Your password" value="<%= (typeof data!='undefined' && typeof data.password != 'undefined' && typeof errors.password == 'undefined')? data.password : '' %>" placeholder="Enter Your Password">>
+                            <p class="validation_err" style="color: red;">
+                                <%= (typeof errors !='undefined' && typeof errors.password !='undefined' )?
+                                    errors.password.msg :'' %>
+                            </p>
+                        </div>
+                        <!-- conform password -->
+                        <div class="register-item">
+                            <label for="confirm_password">conform password :</label>
+                            <input type="password" name="confirm_pass" id="confirm_password" placeholder="Conform Password" value="<%= (typeof data!='undefined' && typeof data.confirm_pass != 'undefined' && typeof errors.confirm_pass == 'undefined')? data.confirm_pass : '' %>">
+                            <p class="validation_err" style="color: red;">
+                                <%= (typeof errors !='undefined' && typeof errors.confirm_pass !='undefined'
+                                    )?errors.confirm_pass.msg:'' %>
+                            </p>
+                        </div>
+                        <!-- phone -->
+                        <div class="register-item">
+                            <label for="phone">Phone :</label>
+                            <input type="number" name="phone" id="phone" placeholder="Enter Phone" value="<%= (typeof data!='undefined' && typeof data.phone != 'undefined' && typeof errors.phone == 'undefined')? data.phone : '' %>">
+                            <p class="validation_err" style="color: red;">
+                                <%= (typeof errors !='undefined' && typeof errors.phone !='undefined'
+                                    )?errors.phone.msg:'' %>
+                            </p>
+                        </div>
+                        <!-- hobby -->
+                        <div class="register-item-check" style="display: flex;">
+                            <label for="hobby">hobby : </label>
+                   
+                            <input type="checkbox" name="hobby[]" id="hobby1" value="reading" <% if(typeof data!='undefined' && typeof data.hobby != 'undefined' && typeof errors.hobby == 'undefined' && data.hobby.includes("reading")){ %><%= 'checked' %><% } %>><label
+                                for="hobby1">reading</label>
+                            <input type="checkbox" name="hobby[]" id="hobby2" value="writing" <% if(typeof data!='undefined' && typeof data.hobby != 'undefined' && typeof errors.hobby == 'undefined' && data.hobby.includes("writing")){ %><%= 'checked' %><% } %>><label
+                                for="hobby2">writing</label>
+                            <input type="checkbox" name="hobby[]" id="hobby3" value="gym" <% if(typeof data!='undefined' && typeof data.hobby != 'undefined' && typeof errors.hobby == 'undefined' && data.hobby.includes("gym")){ %><%= 'checked' %><% } %>><label
+                                for="hobby3">gym</label>
+                        </div>
+                        <p class="validation_err" style="color: red;">
+                            <%= (typeof errors !='undefined' && typeof errors.hobby !='undefined' )? errors.hobby.msg:''
+                                %>
+                        </p>
+                        <!-- gender -->
+                        <div class="register-item-check" style="display: flex;">
+                            <label for="gender">gender : </label>
+                            <input type="radio" name="gender" value="male" id="male" >
+                            <label for="male">male</label>
+                            <input type="radio" name="gender" value="female" id="female">
+                            <label for="female">female</label>
+                        </div>
+                        <p class="validation_err" style="color: red;">
+                            <%= (typeof errors !='undefined' && typeof errors.gender !='undefined' )?
+                                errors.gender.msg:'' %>
+                        </p>
+                        <!-- image -->
+                        <div class="register-item">
+                            <label for="image">Profile Image :</label>
+                            <input type="file" name="image" id="image">
+                            <p class="validation_err" style="color: red;">
+                                <%= (typeof errors !='undefined' && typeof errors.image !='undefined' )?
+                                    errors.image.msg:'' %>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="register add-btn">
+                    <input type="submit" value="Add Details">
+                    <a href="/view_details">View Details</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
